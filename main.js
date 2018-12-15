@@ -12,9 +12,10 @@ function iniciar() {
   E2 = abrirJanela('letras/E.html', 200, 150, 350, 600);
 
 
-  if(D == null || E == null || L == null || T == null) {
+  if(E == null || L == null || T == null) {
     m = document.getElementById('mensagemInicial');
     m.innerText = "Ops, parece que não tenho permissão para mostrar Pop Up";
+    if(D !== null) D.close();
     return false;
   }
 
@@ -26,7 +27,6 @@ function iniciar() {
   setTimeout(() => {R.close();}, 3000);
   setTimeout(() => {U.close();}, 3200);
   setTimeout(() => {N.close();}, 3400);
-
   setTimeout(() => {E2.close(); fase2();}, 3600);
 
 }
@@ -34,14 +34,26 @@ function iniciar() {
 function fase2() {
   sans = abrirJanela('sans.html', 200, 300, 100, 100);
   audio = document.getElementById("audio");
-  setTimeout(function () {audio.play();}, 300);
+  setTimeout(function () {audio.play();}, 200);
 
 
   setTimeout(function () {sans.moveTo(1000, 100);}, 450);
   setTimeout(function () {sans.moveTo(400, 500);}, 600);
   setTimeout(function () {sans.moveTo(400, 100);}, 750);
 
-  setTimeout(function () {sans.close();}, 1500);
+  setTimeout(function () {sans.moveTo(400, 500);}, 850);
+  setTimeout(function () {sans.moveTo(800, 500);}, 1150);
+  setTimeout(function () {sans.moveTo(900, 100);}, 1300);
+
+  for(let x = 1450; x < 2000; x++) {
+    setTimeout(function () {sans.moveTo(2350-x, 500);}, x);
+  }
+
+  setTimeout(function () {sans.moveTo(500, 100);}, 2050);
+  setTimeout(function () {sans.moveTo(1000, 100);}, 2150);
+  setTimeout(function () {sans.moveTo(400, 500);}, 2300);
+
+  setTimeout(function () {sans.close();}, 2500);
 }
 
 function abrirJanela(src, w, h, t, l) {
